@@ -1,0 +1,52 @@
+server:
+  port: 8090
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+
+      routes:
+        - id: AuthenticationService
+          uri: lb://AUTHENTICATION-SERVICE
+          predicates:
+            - Path=/auth/**
+
+        - id: ListService
+          uri: lb://LIST-SERVICE
+          predicates:
+            - Path=/api/lists/**
+          filters:
+            - AuthenticationFilter
+
+        - id: TaskService
+          uri: lb://TASK-SERVICE
+          predicates:
+            - Path=/api/tasks/**
+#            - Path=/api/subtasks/**
+          filters:
+            - AuthenticationFilter
+
+        - id: NotificationInvitationService
+          uri: lb://INVITATION-SERVICE
+          predicates:
+            - Path=/api/invitations/**
+#            - Path=/api/notifications/**
+          filters:
+            - AuthenticationFilter
+
+
+  application:
+    name: TODO-GATEWAY
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+

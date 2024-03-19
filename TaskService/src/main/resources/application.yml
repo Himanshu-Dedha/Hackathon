@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: hackathon
+    password: hackathon
+    url: jdbc:postgresql://localhost:5432/hackathon
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+  application:
+    name: TASK-SERVICE
+server:
+  port: 8083
+eureka:
+  instance:
+    client:
+      serverUrl:
+        defaultZone: http://localhost:8761/eureka/
