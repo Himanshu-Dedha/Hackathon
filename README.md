@@ -1,48 +1,65 @@
 # Todo App Microservices
 
-A task management application built as a microservices architecture, featuring user authentication, lists, notifications, and invitations.
+Todo App is a sophisticated microservices-based Todo application developed using Spring Boot. It's designed to handle various services such as authentication, list management, notifications, and task management, all orchestrated through an API Gateway and Service Registry. The application leverages modern technologies and practices to ensure scalability, security, and efficient communication between services.
 
-Key Technologies
+## Microservices Overview
 
-Spring Boot 3.2.3 / Spring Cloud 2023.0.0: Robust foundation for modern microservice development.
-Java 17: Leverages the latest language features.
-PostgreSQL: Relational database for structured data.
-JSON Web Tokens (JWT): Industry-standard authentication.
-Docker / Docker Compose: Streamlined containerization for deployment.
-Microservices
+- **Authentication Service**: Manages user authentication and token generation using JWT for secure access.
+- **List Service**: Responsible for managing user lists and tasks.
+- **Notification and Invitation Service**: Handles sending notifications and managing invitations.
+- **Service Registry (Eureka Server)**: Facilitates service discovery and registration for seamless microservice integration.
+- **Task Service**: Manages tasks and to-do items for users.
+- **Gateway Service (API Gateway)**: Serves as the single entry point for clients, routing requests to appropriate services and verifying the JWT tokens sent along the requests.
 
-Authentication Service: Secure user management and JWT token generation.
-List Service: Core task and list management functionality.
-Notification & Invitation Service: User communication capabilities.
-Eureka Server: Seamless service discovery and registration.
-Task Service: Dedicated to-do list item management.
-API Gateway: Unified access point for clients.
-Getting Started
+## Technologies Used
 
-1. Docker Setup (Recommended)
+- Java 17
+- Spring Boot 3.2.3
+- Spring Cloud 2023.0.0
+- Spring Data JPA
+- PostgreSQL
+- JSON Web Tokens (JWT)
+- Docker and Docker Compose
 
-git clone https://github.com/your-username/todo-app-microservices.git
-cd todo-app-microservices
-docker-compose build
-docker-compose up
-2. Local Development
+## Setup with Docker
 
-Prerequisites:
+To get the application running with Docker, follow these steps:
 
-Java 17
-PostgreSQL
-Maven
-Run each microservice: ./mvnw spring-boot:run
+1. **Clone the repository:**
+   git clone
 
-Access Services (If using Docker)
+2. **Navigate to the project directory:**
+   cd Hackathon
 
-Eureka Server: http://localhost:8761
-API Gateway: http://localhost:8080
-pgAdmin: http://localhost:5050 (credentials: [email address removed] / admin)
+3. **Start the Containers**
+   docker compose up
 
-Contributing
+This setup includes the PostgreSQL database, pgAdmin for database management, and all the necessary microservices.
 
-We welcome contributions! Open an issue or submit a pull request.
+## Access Services
 
-License
-MIT License
+- **Eureka Server**: <http://localhost:8761>
+- **API Gateway**: <http://localhost:8080>
+- **pgAdmin**: <http://localhost:5050> (Username: pgadmin4@pgadmin.org | Password: admin)
+
+## Development Without Docker
+
+If you prefer running the application locally without Docker, ensure you have the following:
+
+- Java 17
+- PostgreSQL
+- Maven
+
+Start each service individually by navigating to its directory and running:
+./mvnw spring-boot:run
+
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request if you have suggestions for improvements or have identified bugs.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
